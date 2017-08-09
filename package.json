@@ -1,0 +1,19 @@
+{
+  "name": "vue-resumer-1",
+  "version": "1.0.0",
+  "description": "vue简历",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huangxiaoxian130/vue-resumer-1.git"
+  },
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/huangxiaoxian130/vue-resumer-1/issues"
+  },
+  "homepage": "https://github.com/huangxiaoxian130/vue-resumer-1#readme"
+}
