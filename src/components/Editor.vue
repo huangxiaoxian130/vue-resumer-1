@@ -14,20 +14,7 @@
         <Profile v-bind:profile="profile"></Profile>
       </li>
       <li v-bind:class="{active:currentTab === 1}">
-        <h3>工作经历</h3>
-        <el-form>
-          <div v-for="(work,index) in workHistory" class="container">
-            <el-form-item label="公司">
-              <el-input v-model=" work.company"></el-input>
-            </el-form-item>
-            <el-form-item label="工作内容">
-              <el-input v-model=" work.content"></el-input>
-            </el-form-item>
-            <hr>
-            <i class="el-icon-circle-close" v-on:click="removeWorkHistory(index)"></i>
-          </div>
-          <el-button type="primary" v-on:click="addWorkHistory">添加</el-button>
-        </el-form>
+       <WorkHistoryEditor v-bind:workHistory="workHistory"></WorkHistoryEditor>
       </li>
       <li v-bind:class="{active:currentTab === 2}">tab3</li>
       <li v-bind:class="{active:currentTab === 3}">tab4</li>
@@ -40,8 +27,9 @@
 
 <script>
   import Profile from './Profile.vue'
+  import WorkHistoryEditor from './WorkHistoryEditor.vue'
   export default{
-    components:{Profile},
+    components:{Profile,WorkHistoryEditor},
     data(){
       return {
         currentTab: 0,
@@ -52,20 +40,11 @@
           birth: ''
         },
         workHistory:[
-//          {company:'',content:''}
+          {company:'',content:''}
         ]
       }
     },
-    methods:{
-      addWorkHistory(){
-        this.workHistory.push(
-          {company:'',content:''}
-        )
-      },
-      removeWorkHistory(index){
-        this.workHistory.splice(index,1)
-      }
-    },
+
     created(){
       setTimeout(()=> {
 //        console.log(this.profile)
