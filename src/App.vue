@@ -30,18 +30,36 @@
     display: flex;
     flex-direction: column;
   }
+  .icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
   .topbar{
-    background-color: red;
+    position:relative;
+    z-index:1;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
   }
   main{
-    background-color: green;
+    background-color: #ddd;
     display: flex;
     flex:1;
   }
   main > .editor{
-    width:20em;
+    width:30em;
+    margin:16px 8px 16px 16px;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    overflow:hidden;
   }
   main > .preview{
     flex:1;
+    margin:16px 16px 16px 8px;
+    background-color: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    border-radius: 4px;
+
   }
 </style>
