@@ -11,15 +11,25 @@
     </nav>
     <ol class="panes">
       <li v-bind:class="{active:currentTab === 0}">
-        <Profile v-bind:profile="profile"></Profile>
+        <Profile v-bind:profile="resume.profile"></Profile>
       </li>
       <li v-bind:class="{active:currentTab === 1}">
-       <WorkHistoryEditor v-bind:workHistory="workHistory"></WorkHistoryEditor>
+       <ItemEditor v-bind:items="resume.workHistory" v-bind:labels="{company:'公司',content:'工作内容'}" v-bind:title="'工作经历'"></ItemEditor>
       </li>
-      <li v-bind:class="{active:currentTab === 2}">tab3</li>
-      <li v-bind:class="{active:currentTab === 3}">tab4</li>
-      <li v-bind:class="{active:currentTab === 4}">tab5</li>
-      <li v-bind:class="{active:currentTab === 5}">tab6</li>
+      <li v-bind:class="{active:currentTab === 2}">
+        <ItemEditor v-bind:items="resume.studyHistory" v-bind:labels="{school:'学校',duration:'时间',degree:'学位'}" v-bind:title="'学习经历'"></ItemEditor>
+      </li>
+      <li v-bind:class="{active:currentTab === 3}">
+        <ItemEditor v-bind:items="resume.projects" v-bind:labels="{name:'项目名称',content:'工作内容'}" v-bind:title="'项目经历'"></ItemEditor>
+
+      </li>
+      <li v-bind:class="{active:currentTab === 4}">
+        <ItemEditor v-bind:items="resume.awards" v-bind:labels="{name:'奖励详情'}" v-bind:title="'获奖情况'"></ItemEditor>
+
+      </li>
+      <li v-bind:class="{active:currentTab === 5}">
+        <Contact v-bind:contact="resume.contact"></Contact>
+      </li>
     </ol>
   </div>
 </template>
@@ -27,24 +37,17 @@
 
 <script>
   import Profile from './Profile.vue'
-  import WorkHistoryEditor from './WorkHistoryEditor.vue'
+  import ItemEditor from './ItemEditor.vue'
+  import Contact from './Contact.vue'
   export default{
-    components:{Profile,WorkHistoryEditor},
+    components:{Profile,ItemEditor,Contact},
+    props:['resume'],
     data(){
       return {
         currentTab: 0,
         icons: ['shenfenzheng', 'work', 'book', 'xiangmu', 'jiangbei', 'phone'],
-        profile: {
-          name: '',
-          city: '',
-          birth: ''
-        },
-        workHistory:[
-          {company:'',content:''}
-        ]
       }
     },
-
     created(){
       setTimeout(()=> {
 //        console.log(this.profile)
