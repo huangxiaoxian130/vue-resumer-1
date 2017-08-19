@@ -1,6 +1,6 @@
 <template>
   <div id="app" v-bind:class="{previewMode:previewMode}">
-    <Topbar class="topbar"  v-on:click="preview"/>
+    <Topbar class="topbar" v-on:preview="preview"></Topbar>
     <main>
       <Editor v-bind:resume="resume" class="editor"/>
       <Preview v-bind:resume="resume" class="preview"/>
@@ -17,26 +17,26 @@
   export default {
     data(){
       return {
-        previewMode:false,
-        resume:{
+        previewMode: false,
+        resume: {
           profile: {
             name: '',
             city: '',
             birth: ''
           },
-          workHistory:[
-            {company:'',content:''}
+          workHistory: [
+            {company: '', content: ''}
           ],
-          studyHistory:[
-            {school:'',degree:'',duration:''}
+          studyHistory: [
+            {school: '', degree: '', duration: ''}
           ],
-          projects:[
-            {name:'',content:''}
+          projects: [
+            {name: '', content: ''}
           ],
-          awards:[
-            {name:''}
+          awards: [
+            {name: ''}
           ],
-          contact: {QQ:'',wechat:'',email:'',phone:''}
+          contact: {QQ: '', wechat: '', email: '', phone: ''}
 
         }
       }
@@ -45,12 +45,12 @@
     components: {
       Topbar, Editor, Preview
     },
-    methods:{
+    methods: {
       preview(){
-        this.previewMode=true
+        this.previewMode = true
       },
       exitPreview(){
-        this.previewMode=false
+        this.previewMode = false
       }
     }
   }
@@ -61,58 +61,70 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    height:100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
   }
+
   .icon {
-    width: 1em; height: 1em;
+    width: 1em;
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
   }
-  .topbar{
-    position:relative;
-    z-index:1;
-    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+
+  .topbar {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   }
-  main{
+
+  main {
     background-color: #ddd;
     display: flex;
-    flex:1;
+    flex: 1;
   }
-  main > .editor{
-    width:30em;
-    margin:16px 8px 16px 16px;
+
+  main > .editor {
+    width: 30em;
+    margin: 16px 8px 16px 16px;
     background-color: #fff;
-    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    overflow:hidden;
+    overflow: hidden;
   }
-  main > .preview{
-    flex:1;
-    margin:16px 16px 16px 8px;
+
+  main > .preview {
+    flex: 1;
+    margin: 16px 16px 16px 8px;
     background-color: #fff;
-    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 
   }
-  .previewMode #topbar{
+
+  .previewMode #topbar {
     display: none;
   }
-  .previewMode main>#editor{
+
+  .previewMode main > #editor {
     display: none;
   }
-  .previewMode main>#preview{
-    max-width:800px;
-    margin:32px auto;
+
+  .previewMode main > #preview {
+    max-width: 800px;
+    margin: 32px auto;
   }
-  #exitPreview{
+
+  #exitPreview {
     display: none;
   }
-  .previewMode #exitPreview{
-    position:fixed;
-    bottom:16px;
-    right:16px;
+
+  .previewMode #exitPreview {
+    display: inline-block;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
   }
 </style>
